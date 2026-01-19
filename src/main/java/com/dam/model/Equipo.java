@@ -1,9 +1,6 @@
 package com.dam.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 /**
  * Esta clase se encarga de representar un equipo de la competición.
@@ -16,7 +13,9 @@ public class Equipo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(name = "name")
     private String nombre;
+    @Column(name = "region")
     private String region;
 
     public Equipo() {
