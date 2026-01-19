@@ -1,6 +1,14 @@
 package com.dam.model;
 
 import jakarta.persistence.*;
+import jakarta.persistence.OneToMany;
+
+import java.util.HashSet;
+import java.util.Set;
+
+
+
+import java.util.List;
 
 /**
  * Esta clase se encarga de representar un equipo de la competición.
@@ -17,6 +25,8 @@ public class Equipo {
     private String nombre;
     @Column(name = "region")
     private String region;
+    @OneToMany(mappedBy = "equipo")
+    private Set<Jugador> jugadores = new HashSet<>();
 
     public Equipo() {
     }

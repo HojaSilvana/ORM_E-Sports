@@ -5,6 +5,10 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.JoinColumn;
+
+
 import java.time.LocalDate;
 
 /**
@@ -23,6 +27,9 @@ public class Jugador {
     private String nacionalidad;
     @Column(name = "birth_date")
     private LocalDate fechaNacimiento;
+    @ManyToOne
+    @JoinColumn(name = "team_id")
+    private Equipo equipo;
 
 
     public Jugador() {
