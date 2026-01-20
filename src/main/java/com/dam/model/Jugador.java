@@ -1,12 +1,6 @@
 package com.dam.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.JoinColumn;
+import jakarta.persistence.*;
 
 
 import java.time.LocalDate;
@@ -15,7 +9,7 @@ import java.time.LocalDate;
  * Esta clase se encarga de representar un deportista de la competición a lo largo de la app de ORM.
  * @author David
  */
-
+@Entity
 public class Jugador {
 
     @Id
