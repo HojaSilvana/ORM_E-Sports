@@ -4,6 +4,8 @@ import jakarta.persistence.Column;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
+
 
 public class Estadio {
     @Id
@@ -15,7 +17,8 @@ public class Estadio {
     private String ciudad;
     @Column(name = "capacity")
     private int capacidad;
-
+    @OneToOne(mappedBy = "estadio")
+    private Equipo equipo;
     public Estadio() {
     }
 

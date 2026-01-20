@@ -2,6 +2,9 @@ package com.dam.model;
 
 import jakarta.persistence.*;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.JoinColumn;
+
 
 import java.util.HashSet;
 import java.util.Set;
@@ -27,6 +30,9 @@ public class Equipo {
     private String region;
     @OneToMany(mappedBy = "equipo")
     private Set<Jugador> jugadores = new HashSet<>();
+    @OneToOne
+    @JoinColumn(name = "stadium_id")
+    private Estadio  estadio;
 
     public Equipo() {
     }
