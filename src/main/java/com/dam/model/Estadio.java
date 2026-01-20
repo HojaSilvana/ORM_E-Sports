@@ -11,18 +11,15 @@ public class Estadio {
     private String nombre;
     @Column(name = "city")
     private String ciudad;
-    @Column(name = "capacity")
-    private int capacidad;
     @OneToOne(mappedBy = "estadio")
     private Equipo equipo;
     public Estadio() {
     }
 
-    public Estadio(Long id, String nombre, String ciudad, int capacidad) {
+    public Estadio(String nombre, String ciudad) {
         this.id = id;
         this.nombre = nombre;
         this.ciudad = ciudad;
-        this.capacidad = capacidad;
     }
 
     public Long getId() {
@@ -49,11 +46,9 @@ public class Estadio {
         this.ciudad = ciudad;
     }
 
-    public int getCapacidad() {
-        return capacidad;
+    public void setEquipo(Equipo equipo) {
+        this.equipo = equipo;
     }
 
-    public void setCapacidad(int capacidad) {
-        this.capacidad = capacidad;
-    }
+
 }

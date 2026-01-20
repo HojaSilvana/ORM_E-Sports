@@ -29,11 +29,11 @@ public class Jugador {
     public Jugador() {
     }
 
-    public Jugador(Long id, String nombre, String nacionalidad, LocalDate fechaNacimiento) {
-        this.id = id;
+    public Jugador(String nombre, String nacionalidad, LocalDate fechaNacimiento, Equipo equipo) {
         this.nombre = nombre;
         this.nacionalidad = nacionalidad;
         this.fechaNacimiento = fechaNacimiento;
+        this.equipo = equipo;
     }
 
     public Long getId() {
@@ -67,4 +67,11 @@ public class Jugador {
     public void setFechaNacimiento(LocalDate fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
     }
+
+
+    // Metodo para devolver equipos
+    public void setEquipo(Equipo equipo) {
+        this.equipo = equipo;
+    }
+
 }

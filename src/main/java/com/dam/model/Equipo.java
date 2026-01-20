@@ -37,8 +37,7 @@ public class Equipo {
     public Equipo() {
     }
 
-    public Equipo(Long id, String nombre, String region) {
-        this.id = id;
+    public Equipo(String nombre, String region) {
         this.nombre = nombre;
         this.region = region;
     }
@@ -66,6 +65,18 @@ public class Equipo {
     public void setRegion(String region) {
         this.region = region;
     }
+
+    //Metodo para añadir jugador
+    public void addJugador(Jugador jugador) {
+        jugadores.add(jugador);
+        jugador.setEquipo(this);
+    }
+
+    public void setEstadio(Estadio estadio) {
+        this.estadio = estadio;
+    }
+
+
 }
 
 
