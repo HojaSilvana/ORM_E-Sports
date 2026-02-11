@@ -34,6 +34,15 @@ public class Equipo {
     @JoinColumn(name = "stadium_id")
     private Estadio  estadio;
 
+    @OneToMany(mappedBy = "equipo")
+    private Set<Patrocinio> patrocinios = new HashSet<>();
+
+
+    @OneToMany(mappedBy = "equipo")
+    private Set<Patrocinio> patrocinio = new HashSet<>();
+
+
+
     public Equipo() {
     }
 

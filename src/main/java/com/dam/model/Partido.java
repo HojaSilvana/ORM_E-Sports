@@ -3,7 +3,7 @@ package com.dam.model;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "match")
+@Table(name = "games")
 public class Partido {
 
     @Id

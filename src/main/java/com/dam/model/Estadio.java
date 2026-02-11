@@ -13,6 +13,8 @@ public class Estadio {
     private String ciudad;
     @OneToOne(mappedBy = "estadio")
     private Equipo equipo;
+
+    
     public Estadio() {
     }
 

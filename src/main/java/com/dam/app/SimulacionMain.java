@@ -1,6 +1,7 @@
 package com.dam.app;
 
 
+import com.dam.service.SimulacionService;
 import com.dam.util.CargaDatosIniciales;
 
 /**
@@ -11,7 +12,8 @@ import com.dam.util.CargaDatosIniciales;
 public class SimulacionMain {
 
     public static void main(String[] args) {
-        CargaDatosIniciales.cargar();
+
+        new SimulacionService().iniciarSimulacion();
 
     }
 }

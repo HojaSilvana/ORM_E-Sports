@@ -31,6 +31,9 @@ public class Temporada {
         this.competicion = competicion;
     }
 
+    public Temporada() {
+    }
+
     public Long getId() {
         return id;
     }

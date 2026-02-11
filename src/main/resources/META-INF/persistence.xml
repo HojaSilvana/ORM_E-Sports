@@ -21,13 +21,16 @@
                       value="com.mysql.cj.jdbc.Driver"/>
 
             <property name="jakarta.persistence.jdbc.url"
-                      value="jdbc:mysql://localhost:3307/orm_competicion"/>
+                      value="jdbc:mysql://localhost:3306/orm_competicion"/>
 
             <property name="jakarta.persistence.jdbc.user"
                       value="root"/>
 
             <property name="jakarta.persistence.jdbc.password"
                       value="root"/>
+
+            <property name="jakarta.persistence.schema-generation.database.action"
+                      value="drop-and-create"/>
 
             <!-- dialecto de hibernate -->
             <property name="hibernate.dialect"
