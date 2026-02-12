@@ -6,6 +6,13 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
 
 import java.util.List;
+/**
+ * Esta clase se encarga de gestionar el acceso a datos
+ * de la entidad Partido.
+ *
+ * @author David Cuenca
+ */
+
 
 public class PartidoDAO {
     private EntityManager em = JpaUtil.getEntityManager();

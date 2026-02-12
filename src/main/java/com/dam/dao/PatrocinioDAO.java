@@ -7,6 +7,13 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
 
 import java.util.List;
+/**
+ * Esta clase se encarga de gestionar el acceso a datos
+ * de la entidad Patrocinio.
+ *
+ * @author David Cuenca
+ */
+
 
 public class PatrocinioDAO {
 

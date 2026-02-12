@@ -6,6 +6,13 @@ import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * Esta clase se encarga de gestionar el acceso a datos
+ * de la entidad ClasificacionInicial.
+ *
+ * @author David Cuenca
+ */
+
 @Entity
 @Table(name = "competition")
 public class Competicion {

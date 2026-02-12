@@ -2,6 +2,14 @@ package com.dam.model;
 
 import jakarta.persistence.*;
 
+/**
+ * Esta clase representa un partido entre dos equipos
+ * dentro de una jornada, almacenando el resultado.
+ *
+ * @author David Cuenca
+ */
+
+
 @Entity
 @Table(name = "games")
 public class Partido {

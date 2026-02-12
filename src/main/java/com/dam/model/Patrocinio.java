@@ -2,12 +2,13 @@ package com.dam.model;
 
 import jakarta.persistence.*;
 import java.time.LocalDate;
-
 /**
- * Representa el patrocinio de un patrocinador a un equipo en una temporada concreta.
+ * Esta clase representa el contrato de patrocinio
+ * entre un equipo y un patrocinador.
  *
- * @author David
+ * @author David Cuenca
  */
+
 @Entity
 @Table(name = "sponsorship")
 public class Patrocinio {

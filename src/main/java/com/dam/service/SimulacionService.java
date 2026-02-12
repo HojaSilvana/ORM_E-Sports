@@ -7,6 +7,14 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Esta clase se encarga de comprobar la simulación completa
+ * de la competición (temporada, jornadas, partidos y fichajes).
+ *
+ * @author David Cuenca
+ */
+
+
 public class SimulacionService {
 
     private CompeticionDAO competicionDAO = new CompeticionDAO();

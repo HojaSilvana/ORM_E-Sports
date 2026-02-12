@@ -7,6 +7,14 @@ import jakarta.persistence.TypedQuery;
 
 import java.util.List;
 
+/**
+ * Esta clase se encarga de gestionar el acceso a datos
+ * de la entidad Jornada.
+ *
+ * @author David Cuenca
+ */
+
+
 public class JornadaDAO {
 
     private EntityManager em = JpaUtil.getEntityManager();

@@ -6,6 +6,14 @@ import com.dam.model.*;
 
 import java.util.*;
 
+/**
+ * Esta clase se encarga de calcular y guardar
+ * la clasificación tras cada jornada.
+ *
+ * @author David Cuenca
+ */
+
+
 public class ClasificacionService {
 
     private PartidoDAO partidoDAO = new PartidoDAO();

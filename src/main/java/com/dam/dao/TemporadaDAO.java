@@ -7,6 +7,14 @@ import jakarta.persistence.TypedQuery;
 
 import java.util.List;
 
+/**
+ * Esta clase se encarga de gestionar el acceso a datos
+ * de la entidad Temporada.
+ *
+ * @author David Cuenca
+ */
+
+
 public class TemporadaDAO {
 
     public void save(Temporada temporada) {

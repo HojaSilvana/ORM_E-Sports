@@ -2,6 +2,14 @@ package com.dam.model;
 
 import jakarta.persistence.*;
 
+/**
+ * Esta clase representa el estadio asociado a un equipo,
+ * mediante una relación OneToOne.
+ *
+ * @author David Cuenca
+ */
+
+
 @Entity
 public class Estadio {
     @Id

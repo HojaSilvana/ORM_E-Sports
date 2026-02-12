@@ -9,6 +9,14 @@ import jakarta.persistence.criteria.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Esta clase se encarga de gestionar el acceso a datos
+ * de la entidad Jugador.
+ *
+ * @author David Cuenca
+ */
+
+
 public class JugadorDAO {
     private EntityManager em = JpaUtil.getEntityManager();
 
