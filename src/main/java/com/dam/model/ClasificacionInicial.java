@@ -28,16 +28,22 @@ public class ClasificacionInicial {
     @JoinColumn (name = "team_id", nullable = false)
     private Equipo equipo;
 
+    @ManyToOne
+    @JoinColumn(name = "jornada_id")
+    private Jornada jornada;
+
+
     public ClasificacionInicial() {
     }
 
-    public ClasificacionInicial(int puntos, int partidosJugados, int victorias, int derrotas, Temporada temporada, Equipo equipo) {
+    public ClasificacionInicial(int puntos, int partidosJugados, int victorias, int derrotas, Temporada temporada, Equipo equipo, Jornada jornada) {
         this.puntos = puntos;
         this.partidosJugados = partidosJugados;
         this.victorias = victorias;
         this.derrotas = derrotas;
         this.temporada = temporada;
         this.equipo = equipo;
+        this.jornada = jornada;
     }
 
     public Long getId() {
@@ -94,5 +100,13 @@ public class ClasificacionInicial {
 
     public void setEquipo(Equipo equipo) {
         this.equipo = equipo;
+    }
+
+    public Jornada getJornada() {
+        return jornada;
+    }
+
+    public void setJornada(Jornada jornada) {
+        this.jornada = jornada;
     }
 }

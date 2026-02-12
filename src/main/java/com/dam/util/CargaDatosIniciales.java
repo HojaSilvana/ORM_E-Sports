@@ -1,9 +1,7 @@
 package com.dam.util;
 
 import com.dam.config.JpaUtil;
-import com.dam.model.Equipo;
-import com.dam.model.Estadio;
-import com.dam.model.Jugador;
+import com.dam.model.*;
 import jakarta.persistence.EntityManager;
 
 import java.time.LocalDate;
@@ -16,6 +14,17 @@ public class CargaDatosIniciales {
 
         try {
             em.getTransaction().begin();
+
+            // ===== COMPETICIÓN =====
+            Competicion competicion = new Competicion(
+                    "League of Legends World Cup",
+                    LocalDate.now(),
+                    3,
+                    8
+            );
+
+            em.persist(competicion);
+
 
             // ===== EQUIPOS =====
             Equipo g2 = crearEquipo(em, "G2 Esports", "LEC", "G2 Arena", "Berlin");
@@ -45,6 +54,47 @@ public class CargaDatosIniciales {
             crearJugador(em, "Fresskowy", "Spain", LocalDate.of(2002, 3, 8), mkoi);
             crearJugador(em, "Alvaro", "Spain", LocalDate.of(2001, 11, 4), mkoi);
             crearJugador(em, "Myrwn", "Spain", LocalDate.of(2003, 7, 15), mkoi);
+
+            // ===== PATROCINADORES =====
+            Patrocinador nike = new Patrocinador("Nike");
+            Patrocinador redbull = new Patrocinador("RedBull");
+            Patrocinador intel = new Patrocinador("Intel");
+
+            em.persist(nike);
+            em.persist(redbull);
+            em.persist(intel);
+
+            // ===== PATROCINIOS =====
+            // ===== PATROCINIOS =====
+            Patrocinio p1 = new Patrocinio(
+                    g2,
+                    nike,
+                    500000.0,
+                    LocalDate.of(2026, 1, 1),
+                    LocalDate.of(2026, 12, 31)
+            );
+
+            Patrocinio p2 = new Patrocinio(
+                    g2,
+                    redbull,
+                    300000.0,
+                    LocalDate.of(2026, 1, 1),
+                    LocalDate.of(2026, 12, 31)
+            );
+
+            Patrocinio p3 = new Patrocinio(
+                    t1,
+                    intel,
+                    800000.0,
+                    LocalDate.of(2026, 1, 1),
+                    LocalDate.of(2026, 12, 31)
+            );
+
+            em.persist(p1);
+            em.persist(p2);
+            em.persist(p3);
+
+
 
             em.getTransaction().commit();
             System.out.println("Simulación inicial completada correctamente");

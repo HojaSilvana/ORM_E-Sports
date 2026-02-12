@@ -3,6 +3,8 @@ package com.dam.model;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "competition")
@@ -18,6 +20,10 @@ public class Competicion {
     private int cantidadJornadas;
     @Column(name = "TeamsQuantity", nullable = false)
     private int cantidadEquipos;
+
+    @OneToMany(mappedBy = "competicion")
+    private Set<Temporada> temporadas = new HashSet<>();
+
 
     public Competicion() {
     }
@@ -60,4 +66,9 @@ public class Competicion {
     public void setCantidadEquipos(int cantidadEquipos) {
         this.cantidadEquipos = cantidadEquipos;
     }
+
+    public Long getId() {
+        return id;
+    }
+
 }

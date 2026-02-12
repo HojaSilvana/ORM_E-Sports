@@ -1,38 +1,32 @@
 package com.dam.service;
 
-import com.dam.dao.*;
+import com.dam.dao.ClasificacionDAO;
+import com.dam.dao.PartidoDAO;
 import com.dam.model.*;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
-/**
- * Esta clase se encarga de calcular y almacenar
- * la clasificación general de una temporada.
- *
- * @author David Cuenca
- */
 public class ClasificacionService {
 
     private PartidoDAO partidoDAO = new PartidoDAO();
-    private EquipoDAO equipoDAO = new EquipoDAO();
     private ClasificacionDAO clasificacionDAO = new ClasificacionDAO();
 
-    public void calcularClasificacion(Temporada temporada) {
+    public void calcularClasificacion(Temporada temporada, Jornada jornada) {
 
-        List<Partido> partidos = partidoDAO.findAll();
-        List<Equipo> equipos = equipoDAO.findAll();
+        Set<Equipo> equipos = temporada.getEquipos();
 
-        // Mapa para acumular estadísticas
         Map<Equipo, int[]> tabla = new HashMap<>();
 
+        // Inicializamos tabla acumulada
         for (Equipo equipo : equipos) {
             tabla.put(equipo, new int[]{0, 0, 0, 0});
-            // [0]=puntos, [1]=jugados, [2]=victorias, [3]=derrotas
         }
 
-        for (Partido partido : partidos) {
+        // Solo partidos de ESTA jornada
+        List<Partido> partidosJornada =
+                partidoDAO.findByJornada(jornada.getId());
+
+        for (Partido partido : partidosJornada) {
 
             Equipo local = partido.getEquipoLocal();
             Equipo visitante = partido.getEquipoVisitante();
@@ -57,7 +51,7 @@ public class ClasificacionService {
             }
         }
 
-        // Guardar clasificación en BD
+        // Guardamos clasificación de ESTA jornada
         for (Equipo equipo : equipos) {
 
             int[] datos = tabla.get(equipo);
@@ -69,12 +63,16 @@ public class ClasificacionService {
                             datos[2],
                             datos[3],
                             temporada,
-                            equipo
+                            equipo,
+                            jornada
                     );
 
             clasificacionDAO.save(clasificacion);
         }
 
-        System.out.println("Clasificación calculada y guardada correctamente.");
+        System.out.println("Clasificación guardada para jornada " + jornada.getNumero());
     }
+
 }
+
+

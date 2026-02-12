@@ -2,10 +2,18 @@ package com.dam.dao;
 
 import com.dam.config.JpaUtil;
 import com.dam.model.Competicion;
+import com.dam.model.Equipo;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.Query;
 import jakarta.persistence.TypedQuery;
 
 import java.util.List;
+
+/**
+ * Esta clase se encarga del acceso a datos de la entidad Competicion.
+ *
+ * @author David
+ */
 
 public class CompeticionDAO {
 
@@ -39,4 +47,26 @@ public class CompeticionDAO {
             em.close();
         }
     }
+
+    public List<Object[]> obtenerCaracteristicasCompeticion() {
+
+        EntityManager em = JpaUtil.getEntityManager();
+
+        try {
+
+            String sql = """
+                SELECT name, Creation_Date, TeamsQuantity, MatchQuantity
+                FROM competition
+                """;
+
+            Query query = em.createNativeQuery(sql);
+
+            return query.getResultList();
+
+        } finally {
+            em.close();
+        }
+    }
+
+
 }

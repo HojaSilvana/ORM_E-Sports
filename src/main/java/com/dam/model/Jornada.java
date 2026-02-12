@@ -61,4 +61,6 @@ public class Jornada {
     public void setPartidos(Set<Partido> partidos) {
         this.partidos = partidos;
     }
+
+
 }

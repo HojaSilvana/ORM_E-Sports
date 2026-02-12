@@ -37,8 +37,9 @@
                       value="org.hibernate.dialect.MySQL8Dialect"/>
 
             <!-- esto es para que hibernate borre y cree las tablas cada vez -->
-            <property name="hibernate.hbm2ddl.auto"
-                      value="create"/>
+            <property name="hibernate.hbm2ddl.auto" value="create"/>
+
+
 
             <!-- para comprobar las relaciones -->
             <property name="hibernate.show_sql"

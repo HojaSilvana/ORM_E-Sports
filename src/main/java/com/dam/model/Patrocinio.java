@@ -36,6 +36,7 @@ public class Patrocinio {
     @Column(name = "end_date")
     private LocalDate fechaFin;
 
+
     public Patrocinio() {}
 
     public Patrocinio(Equipo equipo, Patrocinador patrocinador,

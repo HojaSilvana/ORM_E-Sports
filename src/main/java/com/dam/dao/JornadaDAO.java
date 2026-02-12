@@ -9,6 +9,8 @@ import java.util.List;
 
 public class JornadaDAO {
 
+    private EntityManager em = JpaUtil.getEntityManager();
+
     public void save(Jornada jornada) {
         EntityManager em = JpaUtil.getEntityManager();
         try {
@@ -30,4 +32,14 @@ public class JornadaDAO {
             em.close();
         }
     }
+
+    public List<Jornada> findByTemporada(Long temporadaId) {
+        return em.createQuery(
+                        "SELECT j FROM Jornada j WHERE j.temporada.id = :id ORDER BY j.numero",
+                        Jornada.class
+                )
+                .setParameter("id", temporadaId)
+                .getResultList();
+    }
+
 }

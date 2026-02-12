@@ -1,11 +1,11 @@
 package com.dam.model;
 
 import jakarta.persistence.*;
-
-import java.util.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
-@Table (name = "Season")
+@Table(name = "Season")
 public class Temporada {
 
     @Id
@@ -15,31 +15,65 @@ public class Temporada {
     @Column(name = "year", nullable = false)
     private int año;
 
-    @ManyToOne
-    @JoinColumn (name = "competicion_id", nullable = false)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "competicion_id", nullable = false)
     private Competicion competicion;
 
-    @OneToMany(mappedBy = "temporada")
+
+    @OneToMany(
+            mappedBy = "temporada",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true,
+            fetch = FetchType.LAZY
+    )
     private Set<Jornada> listaJornadas = new HashSet<>();
 
-    //Esto es asi porque los equipos tienen varias clasificaciones (una en 2025, otra en 2026,etc)
-    @OneToMany (mappedBy = "temporada")
+    @OneToMany(
+            mappedBy = "temporada",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true,
+            fetch = FetchType.LAZY
+    )
     private Set<ClasificacionInicial> clasifiacionEquipos = new HashSet<>();
+
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "temporada_equipo",
+            joinColumns = @JoinColumn(name = "temporada_id"),
+            inverseJoinColumns = @JoinColumn(name = "equipo_id")
+    )
+    private Set<Equipo> equipos = new HashSet<>();
+
+
+    public Temporada() {}
 
     public Temporada(int año, Competicion competicion) {
         this.año = año;
         this.competicion = competicion;
     }
 
-    public Temporada() {
+    // =========================
+    // MÉTODOS HELPER IMPORTANTES
+    // =========================
+
+    public void addJornada(Jornada jornada) {
+        listaJornadas.add(jornada);
+        jornada.setTemporada(this);
     }
+
+    public void addEquipo(Equipo equipo) {
+        equipos.add(equipo);
+    }
+
+    public void addClasificacion(ClasificacionInicial clasificacion) {
+        clasifiacionEquipos.add(clasificacion);
+        clasificacion.setTemporada(this);
+    }
+
 
     public Long getId() {
         return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public int getAño() {
@@ -72,5 +106,13 @@ public class Temporada {
 
     public void setClasifiacionEquipos(Set<ClasificacionInicial> clasifiacionEquipos) {
         this.clasifiacionEquipos = clasifiacionEquipos;
+    }
+
+    public Set<Equipo> getEquipos() {
+        return equipos;
+    }
+
+    public void setEquipos(Set<Equipo> equipos) {
+        this.equipos = equipos;
     }
 }
