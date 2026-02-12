@@ -8,6 +8,8 @@ import jakarta.persistence.TypedQuery;
 import java.util.List;
 
 public class PartidoDAO {
+    private EntityManager em = JpaUtil.getEntityManager();
+
 
     public void save(Partido partido) {
         EntityManager em = JpaUtil.getEntityManager();
@@ -30,4 +32,30 @@ public class PartidoDAO {
             em.close();
         }
     }
+
+    public List<Partido> obtenerPartidosPorJornada(Long jornadaId) {
+
+        EntityManager em = JpaUtil.getEntityManager();
+
+        List<Partido> partidos = em.createQuery(
+                        "SELECT p FROM Partido p WHERE p.jornada.id = :id",
+                        Partido.class
+                )
+                .setParameter("id", jornadaId)
+                .getResultList();
+
+        em.close();
+        return partidos;
+    }
+
+    public List<Partido> findByJornada(Long jornadaId) {
+        return em.createQuery(
+                        "SELECT p FROM Partido p WHERE p.jornada.id = :id",
+                        Partido.class
+                )
+                .setParameter("id", jornadaId)
+                .getResultList();
+    }
+
+
 }

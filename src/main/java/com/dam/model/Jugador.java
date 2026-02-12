@@ -9,7 +9,13 @@ import java.time.LocalDate;
  * Esta clase se encarga de representar un deportista de la competición a lo largo de la app de ORM.
  * @author David
  */
+
 @Entity
+@Table(name = "Player")
+@NamedQuery(
+        name = "Jugador.nuevasIncorporaciones",
+        query = "SELECT j FROM Jugador j ORDER BY j.id DESC"
+)
 public class Jugador {
 
     @Id
@@ -24,6 +30,8 @@ public class Jugador {
     @ManyToOne
     @JoinColumn(name = "team_id")
     private Equipo equipo;
+
+
 
 
     public Jugador() {
@@ -73,5 +81,7 @@ public class Jugador {
     public void setEquipo(Equipo equipo) {
         this.equipo = equipo;
     }
+
+
 
 }

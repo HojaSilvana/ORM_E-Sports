@@ -7,6 +7,11 @@ import jakarta.persistence.TypedQuery;
 
 import java.util.List;
 
+/**
+ * Esta clase realiza consultas sobre la entidad Equipo.
+ * @author David
+ */
+
 public class EquipoDAO {
 
     public void save(Equipo equipo) {
@@ -50,4 +55,24 @@ public class EquipoDAO {
             em.close();
         }
     }
+
+    public List<Equipo> obtenerEquiposDeCompeticion(Long competicionId) {
+
+        EntityManager em = JpaUtil.getEntityManager();
+        List<Equipo> resultado = em.createQuery(
+                        "SELECT DISTINCT e " +
+                                "FROM Temporada t " +
+                                "JOIN t.equipos e " +
+                                "WHERE t.competicion.id = :id",
+                        Equipo.class
+                )
+                .setParameter("id", competicionId)
+                .getResultList();
+
+        em.close();
+        return resultado;
+    }
+
+
+
 }

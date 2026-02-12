@@ -30,4 +30,23 @@ public class PatrocinadorDAO {
             em.close();
         }
     }
+
+    public List<Patrocinador> obtenerPatrocinadoresDeEquipo(Long equipoId) {
+
+        EntityManager em = JpaUtil.getEntityManager();
+
+        try {
+            return em.createQuery("""
+            SELECT p.patrocinador
+            FROM Patrocinio p
+            WHERE p.equipo.id = :id
+        """, Patrocinador.class)
+                    .setParameter("id", equipoId)
+                    .getResultList();
+
+        } finally {
+            em.close();
+        }
+    }
+
 }

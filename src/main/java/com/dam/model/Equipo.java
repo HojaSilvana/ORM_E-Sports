@@ -34,12 +34,13 @@ public class Equipo {
     @JoinColumn(name = "stadium_id")
     private Estadio  estadio;
 
-    @OneToMany(mappedBy = "equipo")
-    private Set<Patrocinio> patrocinios = new HashSet<>();
+    @ManyToMany(mappedBy = "equipos")
+    private Set<Temporada> temporadas = new HashSet<>();
 
 
     @OneToMany(mappedBy = "equipo")
-    private Set<Patrocinio> patrocinio = new HashSet<>();
+    private Set<Patrocinio> patrocinios;
+
 
 
 
@@ -81,9 +82,27 @@ public class Equipo {
         jugador.setEquipo(this);
     }
 
+    public Set<Temporada> getTemporadas() {
+        return temporadas;
+    }
+
     public void setEstadio(Estadio estadio) {
         this.estadio = estadio;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Equipo)) return false;
+        Equipo equipo = (Equipo) o;
+        return id != null && id.equals(equipo.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return id != null ? id.hashCode() : 0;
+    }
+
 
 
 }

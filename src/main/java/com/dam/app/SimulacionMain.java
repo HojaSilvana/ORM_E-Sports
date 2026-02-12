@@ -13,6 +13,8 @@ public class SimulacionMain {
 
     public static void main(String[] args) {
 
+        CargaDatosIniciales.cargar();
+
         new SimulacionService().iniciarSimulacion();
 
     }

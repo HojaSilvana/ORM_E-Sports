@@ -39,4 +39,13 @@ public class TemporadaDAO {
             em.close();
         }
     }
+
+    public void update(Temporada temporada) {
+        EntityManager em = JpaUtil.getEntityManager();
+        em.getTransaction().begin();
+        em.merge(temporada);
+        em.getTransaction().commit();
+        em.close();
+    }
+
 }
