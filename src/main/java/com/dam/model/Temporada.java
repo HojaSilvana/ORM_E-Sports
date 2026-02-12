@@ -4,6 +4,14 @@ import jakarta.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * Esta clase representa una temporada asociada a una competición,
+ * gestionando equipos, jornadas y clasificación.
+ *
+ * @author David Cuenca
+ */
+
+
 @Entity
 @Table(name = "Season")
 public class Temporada {

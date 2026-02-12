@@ -5,8 +5,12 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * Representa una entidad patrocinadora.
+ * Esta clase representa una empresa patrocinadora
+ * que puede financiar equipos.
+ *
+ * @author David Cuenca
  */
+
 @Entity
 @Table(name = "sponsor")
 public class Patrocinador {

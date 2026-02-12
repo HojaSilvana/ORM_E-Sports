@@ -5,6 +5,14 @@ import jakarta.persistence.*;
 
 import java.util.*;
 
+/**
+ * Esta clase representa una jornada dentro de una temporada,
+ * agrupando los partidos disputados.
+ *
+ * @author David Cuenca
+ */
+
+
 @Entity
 @Table (name = "MatchDay")
 public class Jornada {

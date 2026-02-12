@@ -14,7 +14,8 @@ import java.util.Set;
 import java.util.List;
 
 /**
- * Esta clase se encarga de representar un equipo de la competición.
+ * Esta clase representa un equipo participante en la competición,
+ * incluyendo su región, estadio, jugadores y patrocinadores.
  *
  * @author David Cuenca
  */

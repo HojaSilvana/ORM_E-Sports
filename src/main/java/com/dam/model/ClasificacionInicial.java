@@ -2,6 +2,14 @@ package com.dam.model;
 
 import jakarta.persistence.*;
 
+/**
+ * Esta clase representa la clasificación acumulada
+ * de un equipo en una jornada concreta de una temporada.
+ *
+ * @author David Cuenca
+ */
+
+
 @Entity
 @Table (name = "Classification")
 

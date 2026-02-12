@@ -6,9 +6,12 @@ import jakarta.persistence.*;
 import java.time.LocalDate;
 
 /**
- * Esta clase se encarga de representar un deportista de la competición a lo largo de la app de ORM.
- * @author David
+ * Esta clase representa un jugador profesional,
+ * asociado a un equipo mediante relación ManyToOne.
+ *
+ * @author David Cuenca
  */
+
 
 @Entity
 @Table(name = "Player")

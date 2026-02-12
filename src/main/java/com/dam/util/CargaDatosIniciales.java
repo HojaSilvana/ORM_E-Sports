@@ -6,6 +6,14 @@ import jakarta.persistence.EntityManager;
 
 import java.time.LocalDate;
 
+/**
+ * Esta clase se encarga de cargar los datos iniciales
+ * necesarios para ejecutar la simulación.
+ *
+ * @author David Cuenca
+ */
+
+
 public class CargaDatosIniciales {
 
     public static void cargar() {
